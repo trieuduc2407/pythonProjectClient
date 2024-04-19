@@ -48,10 +48,10 @@
             {{item['price']}}
             <img src="{{item['img']}}" alt="">
             {{item['product_type']}}
-<!--            <form action="/adminDelete/{{item['product_id']}}" method="post" style="display: inline">-->
-<!--                <button type="submit">delete</button>-->
-<!--            </form>-->
-            <a href="/adminDelete/{{item['product_id']}}">delete</a>
+            <form action="/adminDelete/{{item['product_id']}}" method="post" style="display: inline">
+                <button type="submit">delete</button>
+            </form>
+<!--            <a href="/adminDelete/{{item['product_id']}}">delete</a>-->
             <a href="/adminUpdate/{{item['product_id']}}">update</a>
         </li>
         {% endfor %}

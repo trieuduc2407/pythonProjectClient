@@ -1,3 +1,5 @@
+import sqlite3
+
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import requests
 import json
@@ -5,6 +7,7 @@ import json
 app = Flask(__name__)
 
 app.secret_key = 'dtd'
+sqldbname_sanpham = 'C:/Users/trieu/Downloads/PyCharm/pythonProject/sanpham.db'
 
 baseUrl = 'http://127.0.0.1:5002'
 
@@ -62,7 +65,7 @@ def admin_add():
         type = request.form.get('product_type')
         if id and name and quantity and price and img and type:
             response = requests.post(
-                baseUrl+'/adminAdd', json={
+                f'{baseUrl+'/adminAdd'}', json={
                     'product_id': id,
                     'product_name': name,
                     'quantity': quantity,
@@ -90,55 +93,100 @@ def test(id):
     return id
 
 
-@app.route('/adminUpdate/<product_id>', methods=['get', 'post'])
+# @app.route('/adminUpdate/<product_id>', methods=['get', 'post'])
+# def adminUpdate(product_id):
+#     # print(product_id)
+#     # print(f'{baseUrl+'/adminUpdate'}/{product_id}')
+#     if request.method == 'post':
+#         name = request.form.get('product_name')
+#         quantity = request.form.get('quantity')
+#         price = request.form.get('price')
+#         img = request.form.get('img')
+#         if name and quantity and price and img:
+#             response = requests.put(
+#                 f'{baseUrl+'/adminUpdate/'}{product_id}',
+#                 json={'product_name': name, 'quantity': quantity, 'price': price, 'img': img}
+#                 )
+#             if response.status_code == 200:
+#                 flash(f'Product {product_id} Updated Successfully')
+#                 return redirect(url_for('admin'))
+#             else:
+#                 flash('error')
+#                 return redirect(url_for('adminUpdate'))
+#         else:
+#             flash('info required')
+#             return redirect(url_for('adminUpdate'))
+#     else:
+#         response = requests.post(f'{baseUrl+'/adminUpdate'}/{product_id}')
+#         if response.status_code == 200:
+#             item = response.json()
+#             return render_template('adminUpdate.html', item=item)
+#         else:
+#             flash('item not found')
+#             return render_template('adminUpdate.html')
+#
+#
+# @app.route('/adminDelete/<product_id>', methods=['post', 'get'])
+# def adminDelete(product_id):
+#     if request.method == 'post':
+#         response = requests.delete(f'{baseUrl+'/adminDelete'}/{product_id}')
+#         if response.status_code == 200:
+#             flash(f'Product Deleted Successfully')
+#             return redirect(url_for('admin'))
+#         else:
+#             flash('error')
+#             return render_template('adminDelete.html')
+#     else:
+#         response = requests.get(f'{baseUrl}/admin/{product_id}')
+#         if response.status_code == 200:
+#             item = response.json()
+#             return render_template('adminDelete.html', item=item)
+#         else:
+#             flash('info required')
+#             return render_template('adminDelete.html')
+
+def get_db_connection():
+    connection = sqlite3.connect(sqldbname_sanpham)
+    connection.row_factory = sqlite3.Row
+    return connection
+
+
+@app.route('/adminUpdate/<product_id>', methods=['post', 'get'])
 def adminUpdate(product_id):
-    # print(product_id)
-    # print(f'{baseUrl+'/adminUpdate'}/{product_id}')
-    if request.method == 'post':
+    if request.method == 'get':
+        connection = get_db_connection()
+        cur = connection.cursor()
+        cur.execute('select * from sanpham where product_id=?', (product_id,))
+        item = cur.fetchone()
+        connection.close()
+        if item is None:
+            flash('item not found', 'error')
+            return redirect(url_for('admin'))
+        return render_template('adminUpdate.html', item=item)
+    elif request.method == 'post':
         name = request.form.get('product_name')
         quantity = request.form.get('quantity')
         price = request.form.get('price')
         img = request.form.get('img')
-        if name and quantity and price and img:
-            response = requests.put(
-                f'{baseUrl+'/adminUpdate'}/{product_id}',
-                json={'product_name': name, 'quantity': quantity, 'price': price, 'img': img}
-                )
-            if response.status_code == 200:
-                flash(f'Product {product_id} Updated Successfully')
-                return redirect(url_for('admin'))
-            else:
-                flash('error')
-        else:
-            flash('info required')
-    else:
-        response = requests.post(f'{baseUrl+'/adminUpdate'}/{product_id}')
-        if response.status_code == 200:
-            item = response.json()
-            return render_template('adminUpdate.html', item=item)
-        else:
-            flash('item not found')
-            return render_template('adminUpdate.html')
+        connection = get_db_connection()
+        cur = connection.cursor()
+        cur.execute('update sanpham set product_name=?, quantity=?, price=?, img=? where product_id=?', (name, quantity, price, img, product_id))
+        connection.commit()
+        connection.close()
+        flash('updated', 'success')
+        return redirect(url_for('admin'))
+    return render_template('adminUpdate.html')
 
 
-@app.route('/adminDelete/<product_id>', methods=['post', 'get'])
-def adminDelete(product_id):
-    if request.method == 'post':
-        response = requests.delete(f'{baseUrl+'/adminDelete'}/{product_id}')
-        if response.status_code == 200:
-            flash(f'Product Deleted Successfully')
-            return redirect(url_for('admin'))
-        else:
-            flash('error')
-            return render_template('adminDelete.html')
-    else:
-        response = requests.get(f'{baseUrl}/admin/{product_id}')
-        if response.status_code == 200:
-            item = response.json()
-            return render_template('adminDelete.html', item=item)
-        else:
-            flash('info required')
-            return render_template('adminDelete.html')
+@app.route('/adminDelete/<product_id>', methods=['post'])
+def delete(product_id):
+    connection = get_db_connection()
+    cur = connection.cursor()
+    cur.execute("delete from sanpham where product_id like '%"+product_id+"%'")
+    connection.commit()
+    connection.close()
+    flash('deleted', 'success')
+    return redirect(url_for('admin'))
 
 
 if __name__ == '__main__':
