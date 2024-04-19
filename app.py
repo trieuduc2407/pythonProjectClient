@@ -153,17 +153,7 @@ def get_db_connection():
 
 @app.route('/adminUpdate/<product_id>', methods=['post', 'get'])
 def adminUpdate(product_id):
-    if request.method == 'get':
-        connection = get_db_connection()
-        cur = connection.cursor()
-        cur.execute('select * from sanpham where product_id=?', (product_id,))
-        item = cur.fetchone()
-        connection.close()
-        if item is None:
-            flash('item not found', 'error')
-            return redirect(url_for('admin'))
-        return render_template('adminUpdate.html', item=item)
-    elif request.method == 'post':
+    if request.method == 'POST':
         name = request.form.get('product_name')
         quantity = request.form.get('quantity')
         price = request.form.get('price')
@@ -175,7 +165,13 @@ def adminUpdate(product_id):
         connection.close()
         flash('updated', 'success')
         return redirect(url_for('admin'))
-    return render_template('adminUpdate.html')
+    else:
+        connection = get_db_connection()
+        cur = connection.cursor()
+        cur.execute('select * from sanpham where product_id=?', (product_id,))
+        item = cur.fetchone()
+        connection.close()
+        return render_template('adminUpdate.html', item=item)
 
 
 @app.route('/adminDelete/<product_id>', methods=['post'])

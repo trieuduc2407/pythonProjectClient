@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="style1.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,50 +11,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
           integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Add Storage</title>
 
-    <title>Shopping your cart</title>
-
-    <style>
-        .form {
-            text-align: center;
-            font-size: 20px;
-        }
-
-        input {
-            text-size: 50px;
-            border-radious: 10px;
-        }
-
-        table {
-
-        }
-
-        .table-search {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
-<a href="/adminAdd">add</a>
-<div class="items">
-    <ul>
-        {% for item in items %}
-        <li>
-            {{item['product_id']}}
-            {{item['product_name']}}
-            {{item['quantity']}}
-            {{item['price']}}
-            <img src="{{item['img']}}" alt="">
-            {{item['product_type']}}
-            <form action="/adminDelete/{{item['product_id']}}" method="post" style="display: inline">
-                <button type="submit">delete</button>
-            </form>
-<!--            <a href="/adminDelete/{{item['product_id']}}">delete</a>-->
-            <a href="/adminUpdate/{{item['product_id']}}">update</a>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="container text-center">
+    <div class="row">
+        
+    </div>
+    <div class = "row justify-content-center mt-5 mb-3">
+        <div class="col-4">
+            <a href = "/adminAdd">
+                <button type="submit" class="btn btn-primary btn-lg">Thêm sản phẩm</button>
+            </a>
+        </div>
+    </div>
+    <div class="row my-5 py-2">
+        <div class="col-1 fw-bold">ID</div>
+        <div class="col-1 fw-bold">Tên</div>
+        <div class="col-1 fw-bold">Số lượng</div>
+        <div class="col-1 fw-bold">Giá</div>
+        <div class="col-3 fw-bold">Ảnh sản phẩm</div>
+        <div class="col-1 fw-bold">Phân khúc</div>
+    </div>
+    {% for item in items %}
+    <div class="row mt-0 mb-2">
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['product_id']}}</div>
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['product_name']}}</div>
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['quantity']}}</div>
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['price']}}</div>
+        <div class="col-3 align-items-center justify-content-center d-flex"><img class="img-fluid" src="{{item['img']}}" alt=""></div>
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold" style="text-transform: uppercase">{{item['product_type']}}</div>
+        <form class="col-2 align-items-center justify-content-center d-flex " action="/adminDelete/{{item['product_id']}}" method="post">
+            <button type="submit" class="btn btn-lg btn-primary">Xoá sản phẩm</button>
+        </form>
+        <a class="col-2 align-items-center justify-content-center text-decoration-none d-flex " href="/adminUpdate/{{item['product_id']}}">
+            <button type="submit" class="btn btn-lg btn-primary">Sửa sản phẩm</button>
+        </a>
+    </div>
+    {% endfor %}
 </div>
 </body>
 </html>
