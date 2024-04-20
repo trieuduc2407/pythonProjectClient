@@ -1,0 +1,175 @@
+
+$background_button_homepage : none ;
+
+i{
+    transform: rotate(270deg);
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+  }
+    .row-item-1,
+    .row-item,.row-item-2,.row-item-3,.row-item-4,.row-item-5,
+    .row-item-6,.row-item-7 {
+        // background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        min-height:  37.7500em; 
+        display: flex;
+  }
+  .row-item{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2024/homepagepfas/march/en/INF-EN-HOME-LEFT-PFA-desktop-1500x555_v3.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
+    min-height:  37.7500em; 
+    display: flex;
+  }
+  .row-item-1{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
+    min-height:  37.7500em; 
+    display: flex;  
+  }
+  .row-item-2{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx60-luxury-crossover-coupe-dsk-v1.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
+    min-height:  37.7500em; 
+    display: flex;
+}
+  .row-item-3{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx50-luxury-sports-car-dsk-v1.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
+    min-height:  37.7500em; 
+    display: flex;
+}
+  .row-item-4{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx55-luxury-crossover-coupe-dsk-v2.jpg");
+
+  }
+  .row-item-5{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-q50-luxury-sedan-dsk-v1.jpg");
+
+  }
+  .row-item-6{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-q60-luxury-coupe-dsk-v1.jpg");
+
+  }
+  .row-item-7{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/vi/HP-PFA.jpg");
+  }
+  .row-item-1,.row-item-3,.row-item-5,.row-item-7{
+    justify-content: flex-end;
+  }
+  .content-item {
+    display: flex;
+    padding-left: 6%;
+    padding-top: 2%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .content-item-1 {
+    display: flex;
+    padding-right: 6%;
+    padding-top: 2%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .text{
+    color: aliceblue;
+  }
+  .button-item{
+    margin-top: 6% ;
+    margin-right: 60%;
+  }
+  .button-item button{
+    background-color: bisque;
+    border-radius: 15px;
+    
+  }
+  @media screen and (max-width:600px){
+    .button-item button{
+      background-color: bisque;
+      width: 100vw;
+    }
+    .row-item-1,
+    .row-item,.row-item-2,.row-item-3,.row-item-4,.row-item-5,
+    .row-item-6,.row-item-7 {
+        // background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg");
+        background-size: contain ;
+        background-repeat: no-repeat;
+        min-height:  37.7500em; 
+        display: flex;
+  }
+  .row-item{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…h/en/INF-EN-HOME-LEFT-PFA-desktop-1500x555_v3.jpg");
+    background-size: contain ;
+  }
+  .row-item-1{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg");
+    background-size: contain ;
+    background-repeat: no-repeat;
+  }
+  .row-item-2{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…3/infiniti-qx60-luxury-crossover-coupe-dsk-v1.jpg");
+  }
+  .row-item-3{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…n/2023/infiniti-qx50-luxury-sports-car-dsk-v1.jpg");
+  }
+  .row-item-4{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…3/infiniti-qx55-luxury-crossover-coupe-dsk-v2.jpg");
+
+  }
+  .row-item-5{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…-gen/2023/infiniti-q50-luxury-sedan-xl-dsk-v1.jpg");
+
+  }
+  .row-item-6{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…-gen/2023/infiniti-q60-luxury-coupe-xl-dsk-v1.jpg");
+
+  }
+  .row-item-7{
+    background: url("https://www.infiniti.ca/content/dam/Infiniti/Canad…-gen/2023/infiniti-q60-luxury-coupe-xl-dsk-v1.jpg");
+  }
+    .text{
+      color: aliceblue;
+    }
+    .content-item {
+      display: flex;
+      padding-left: 6%;
+      padding-top: 7%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      
+    }
+    .content-item-1 {
+      display: flex;
+      padding-left: 6%;
+      padding-top: 7%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  
+  
+    .button-item button{
+      background-color: $background_button_homepage;
+      width: 100vw;
+      margin-left: 25%;
+      border: 2px solid black;
+    }
+  
+    .row-item-1{
+      justify-content: flex-start;
+    }
+    
+    
+  }
+  

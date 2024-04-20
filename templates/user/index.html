@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Car | INFINITI CANADA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="static/css/hearder.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <link rel="stylesheet" href="static/css/Home_page/content.css">
+    <link rel="stylesheet" href="static/css/Home_page/registration.css">
+    <link rel="stylesheet" href="static/css/Home_page/Sub_Nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+            integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Link sass -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.min.js"
+            integrity="sha512-/F8YhC3n5OrM9ta9htMD620kH0paKnjDHCHcSvyWumxlqsnkS/XCpYExuMZuXE4K3GE9tDQFBqgXsmkjsjRbDQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light  " style="background-color: #EFEDE9;">
+        <div class="container-fluid">
+
+            <!-- Link đến trang chủ  -->
+            <a class="navbar-brand " href="#">
+                <img src="static/img/Logo_website.png" alt="link_anh_Infinity" style="width: 100%; height: auto;">
+            </a>
+
+            <!-- Khi thu nhỏ lại sẽ có nút để sổ cửa sổ ra  -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto nav-underline  ">
+                    <li class="nav-item" id="vehicle-btn">
+                        <a class="nav-link text-decoration vehicles" aria-current="page" href="#">Vehicles <i
+                                class="fa-solid fa-chevron-down"></i></a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="Service_maintain/ThietKeWeb/Service.html">Services</a>
+                    </li>
+
+
+                    <li class="nav-item ">
+                        <a class="nav-link " href="Owner/WEB-COPY/html/Home_Owner.html">
+                            Owners
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="Vehicle/Design_web/html/home_blog.html" tabindex="-1"
+                           aria-disabled="true">News</a>
+                    </li>
+                </ul>
+                <!-- <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
+
+                <!-- Order Now -->
+                <a type="button" href="/login" class="btn-order btn me-auto btn-lg btn-danger"
+                   >
+                    <i class="fa fa-user-circle"></i>
+                    Sign in</a>
+                <a type="button" href="/register" class="btn-order btn mx-auto btn-lg btn-danger"
+                   >
+                    <i class="fa fa-user-circle"></i>
+                    Sign up</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- form -->
+                                <div class="container-form">
+                                    <header>Registration</header>
+                                    <form action="#">
+                                        <div class="form first">
+                                            <div class="detail-personal">
+                                                <span class="title">Personal Details</span>
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label for="">Full Name</label>
+                                                        <input type="text" placeholder="Enter your name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Date of Birth</label>
+                                                        <input type="date" placeholder="Enter your name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Email</label>
+                                                        <input type="email" placeholder="Enter your email" required>
+                                                    </div>
+
+
+                                                    <div class="input-field">
+                                                        <label for="">Mobile Number</label>
+                                                        <input type="number" placeholder="Enter your number" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Identification Card</label>
+                                                        <input type="password" placeholder="Enter your gender" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Occupation</label>
+                                                        <input type="text" placeholder="Enter your occupation" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="detail ID">
+                                                <span class="title">Identity Details</span>
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label for="">ID type</label>
+                                                        <input type="text" placeholder="Enter ID type" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">ID Number</label>
+                                                        <input type="number" placeholder="Enter ID number" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Issued Authority</label>
+                                                        <input type="text" placeholder="Enter issued Authority"
+                                                               required>
+                                                    </div>
+
+
+                                                    <div class="input-field">
+                                                        <label for="">Issued State</label>
+                                                        <input type="text" placeholder="Enter issued state" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Issued Date</label>
+                                                        <input type="date" placeholder="Enter issued date" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Expiry Date</label>
+                                                        <input type="text" placeholder="Enter expriry date" required>
+                                                    </div>
+                                                </div>
+
+                                                <buttton class="nextBtn">
+                                        <span class="btnText">
+                                            Next
+                                        </span>
+                                                    <i class="uil uil-navigator"></i>
+                                                </buttton>
+                                            </div>
+                                        </div>
+                                        <!-- Form secord -->
+                                        <div class="form second">
+                                            <div class="detail address">
+                                                <span class="title">Address Details</span>
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label for="">Address Type</label>
+                                                        <input type="text" placeholder="Enter address type" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Nationality</label>
+                                                        <input type="text" placeholder="Enter Nationality" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">State</label>
+                                                        <input type="email" placeholder="Enter your state" required>
+                                                    </div>
+
+
+                                                    <div class="input-field">
+                                                        <label for="">District</label>
+                                                        <input type="text" placeholder="Enter your district" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Block Number</label>
+                                                        <input type="number" placeholder="Enter block number" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Ward Number</label>
+                                                        <input type="number" placeholder="Enter ward number" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="detail family">
+                                                <span class="title">Family Details</span>
+
+                                                <div class="fields">
+                                                    <div class="input-field">
+                                                        <label for="">Father name</label>
+                                                        <input type="text" placeholder="Enter father name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Mother Name</label>
+                                                        <input type="text" placeholder="Enter mother name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Siblings</label>
+                                                        <input type="text" placeholder="Enter siblings name" required>
+                                                    </div>
+
+
+                                                    <div class="input-field">
+                                                        <label for="">Father in Law</label>
+                                                        <input type="text" placeholder="Father in law name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Mother in Law</label>
+                                                        <input type="text" placeholder="Mother in law name" required>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <label for="">Spouse Name</label>
+                                                        <input type="text" placeholder="Enter Spouse Name" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="buttons">
+                                                    <div class="backBtn">
+                                                        <i class="uil uil-navigator"></i>
+                                                        <span class="btnText">
+                                                Back
+                                            </span>
+
+                                                    </div>
+                                                    <buttton class="submit">
+                                            <span class="btnText">
+                                                Submit
+                                            </span>
+                                                        <i class="uil uil-navigator"></i>
+                                                    </buttton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- form -->
+                            </div>
+                            <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Header -->
+<div class="sub-header no-display">
+    <div class="sub-nav">
+        <h1>Discover Your INFINITI</h1>
+        <!-- Search + button: modify later -->
+        <div class="search">
+            <input type="text" placeholder="Search..." id="searchInput"/>
+        </div>
+        <button>X</button>
+    </div>
+    <div class="sub-content">
+        <div class="left-nav">
+            <div class="item-nav" id="all-vehicles">All Vehicles</div>
+            <div class="item-nav" id="Sedans-Couples">Sedans & Coupes</div>
+            <div class="item-nav" id="Crossovers-SUVs">Crossover & SUVs</div>
+            <div class="item-nav" id="Certified">Certified Pre-Owned ></div>
+            <div class="item-nav" id="Future">Future & Concept ></div>
+
+        </div>
+        <div class="product-nav" id="presentation-cars">
+            <div class="img-render"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slider -->
+<div class="slider">
+
+</div>
+<!-- Slider -->
+
+<!-- Content -->
+<div class="content-container">
+    <!-- Đây là căn button sang trái -->
+    <div class="row-item " id="item1">
+        <div class="content-item " id="item-1">
+            <div class="text text-dark left-to-right show-on-scroll ">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item left-to-right show-on-scroll">
+                <button class="btn ">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- end -->
+
+    <!-- Đây là căn button sang phải -->
+    <div class="row-item-1" id="item2">
+        <div class="content-item-1">
+            <div class="text right-to-left show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item right-to-left show-on-scroll">
+                <button class="btn">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang trái -->
+    <div class="row-item" id="item3">
+        <div class="content-item">
+            <div class="text left-to-right show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item left-to-right show-on-scroll">
+                <button class="btn ">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang phải -->
+    <div class="row-item-1" id="item4">
+        <div class="content-item-1">
+            <div class="text right-to-left show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item right-to-left show-on-scroll">
+                <button class="btn">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang trái -->
+    <div class="row-item" id="item5">
+        <div class="content-item">
+            <div class="text left-to-right show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item left-to-right show-on-scroll">
+                <button class="btn ">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang phải -->
+    <div class="row-item-1" id="item6">
+        <div class="content-item-1">
+            <div class="text right-to-left show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item right-to-left show-on-scroll">
+                <button class="btn ">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang trái -->
+    <div class="row-item" id="item7">
+        <div class="content-item ">
+            <div class="text left-to-right show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item left-to-right show-on-scroll">
+                <button class="btn">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Đây là căn button sang phải -->
+    <div class="row-item-1" id="item8">
+        <div class="content-item-1">
+            <div class="text right-to-left show-on-scroll">
+                <h3>INFINITI SPRING SALES EVENT</h3>
+                <h5>Lease rates from 1.99%</h5>
+                <p>PLUS</p>
+                <h5>Get up to $2,000 bonus lease cash</h5>
+                <p>on QX50, QX55 and QX60 models</p>
+            </div>
+            <div class="button-item right-to-left show-on-scroll">
+                <button class="btn">Shop now <i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- end -->
+
+</div>
+</div>
+</div>
+<script src="asset/js/content.js">
+
+</script>
+
+
+<!-- <div class="row">
+  <img src="https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg" alt="">
+  <div class="  text-infinity-2">
+    <p class="text-infinity">
+      <b>INFINITI SPRING SALES EVENT</b><br>
+      <b>Lease rates from 1.99%</b><br>
+      PLUS<br>
+      <b>Get up to $2,000 bonus lease cash</b> <br>
+      on QX50, QX55 and QX60 models<br>
+      </p>
+  </div>
+</div>
+
+<div class="row">
+  <img src="https://www.infiniti.ca/content/dam/Infiniti/Canada/home-page/next-gen/2023/infiniti-qx80-luxury-suv-xl-dsk.jpg" alt="">
+  <div class="  text-infinity-1">
+    <p class="text-infinity">
+      <b>INFINITI SPRING SALES EVENT</b><br>
+      <b>Lease rates from 1.99%</b><br>
+      PLUS<br>
+      <b>Get up to $2,000 bonus lease cash</b> <br>
+      on QX50, QX55 and QX60 models<br>
+      </p>
+  </div>
+</div>
+
+ -->
+
+
+</div>
+<!-- Content -->
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="ms-auto">
+            <a href="#">English <i class="footer_icon fa-solid fa-chevron-down" style="color: #fff;"></i></a>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="footer-car">
+        <div class="container text-center text-md-start pt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-12 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        LEARN
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">All Vehicles</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Future & Concept</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">INFINITI Distinction™</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">INVISION Blog</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Diversity & Inclusion</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Vehicle Brochures</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Wallpapers</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">FAQs</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Technician Internship</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Open Cookies Settings</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-12 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        SHOP
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Shop INFINITI Now</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Build & Price</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Search Inventory</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Compare to Competition</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Archived Models</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-12 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        PURCHASE
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Financing & Leasing</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Payment Estimator</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Trade-In Estimator</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Request a Quote</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Get Pre-Approved</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Locate a Retailer</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Schedule a Test Drive</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-12 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        OWNERSHIP
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">INFINITI Owner Portal</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">INFINITI Financial Services</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">INFINITI InTouch™</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Service & Maintenance</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Roadside Assistance</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Navigation Updates</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Update Address</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Update Ownership</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+                <div class="col text-uppercase fw-bold mx-auto mb-4">
+                    <h6>FOLLOW INFINITI</h6>
+                    <div>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-google"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-instagram"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-linkedin"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="footer_icon fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <section class="border-top text-muted">
+        <div class="container text-center text-md-start mt-3 text-muted ">
+            <div class="row">
+                <div class="col-6 col1 ">
+                    <ul class="list-unstyle list-inline ">
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">INFINITI
+                            Worldwide</a></li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Careers
+                        </a>
+                        </li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Accessibility
+                        </a>
+                        </li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Contact Us
+                        </a>
+                        </li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Sitemap</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col2  ">
+                    <ul class="list-unstyle list-inline">
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">Privacy
+                            Policy</a></li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Legal
+                        </a>
+                        </li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            Cookies
+                        </a>
+                        </li>
+                        <li class="list-inline-item"><a href="" class="list-inline-link text-decoration-none">
+                            ©INFINITI 2024
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+<script src="static/js/registration.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="static/js/vehicles.js"></script>
+<script src="static/js/firebase.js"></script>
+</body>
+</html>

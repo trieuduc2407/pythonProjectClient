@@ -1,8 +1,9 @@
 import sqlite3
 
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 import requests
 import json
+import re
 
 app = Flask(__name__)
 
@@ -11,16 +12,16 @@ sqldbname_sanpham = 'C:/Users/trieu/Downloads/PyCharm/pythonProject/sanpham.db'
 
 baseUrl = 'http://127.0.0.1:5002'
 
-
-@app.route('/', methods=['get'])
-def index():
-    response = requests.get(baseUrl)
-    if response.status_code == 200:
-        items = response.json()
-        return render_template('/admin/index.html', items=items)
-    else:
-        flash('Something went wrong')
-    return render_template('/admin/index.html')
+#
+# @app.route('/', methods=['get'])
+# def index():
+#     response = requests.get(baseUrl)
+#     if response.status_code == 200:
+#         items = response.json()
+#         return render_template('/admin/index.html', items=items)
+#     else:
+#         flash('Something went wrong')
+#     return render_template('/admin/index.html')
 
 
 @app.route('/search', methods=['get', 'post'])
@@ -183,6 +184,88 @@ def delete(product_id):
     flash('deleted', 'success')
     return redirect(url_for('admin'))
 
+
+
+sqldbname_kiet = 'infiniti.db'
+
+
+@app.route('/')
+def index():
+    return render_template('/user/index.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    message = ''
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+        email = request.form['email']
+        password = request.form['password']
+        conn = sqlite3.connect(sqldbname_kiet)
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM user WHERE email = ? AND password =  ?', (email, password,))
+        user = cursor.fetchone()
+        conn.close()
+
+        # Check admin
+        conn2 = sqlite3.connect(sqldbname_kiet)
+        cur = conn2.cursor()
+        cur.execute('SELECT * FROM user_addmin WHERE email = ? AND password = ?  ', (email, password,))
+        admin = cur.fetchall()
+        print(admin)
+        if user :
+            session['loggedin'] = True
+            session['userid'] = user[0]
+            session['name'] = user[1]
+            session['email'] = user[2]
+            message = 'Logged in successfully!'
+            con2 = conn2.cursor()
+            con2.execute('SELECT * FROM user where email = ?', (email,))
+            user_name = con2.fetchone()
+            return render_template(template_name_or_list='/user/user_login.html', message=message, user=user_name)
+        elif admin :
+            # return render_template(template_name_or_list='/admin/admin.html')
+            # con2 = conn2.cursor()
+            # con2.execute('select * from user_addmin where email=?', (email,))
+            # admin = con2.fetchone()
+            # return render_template('/admin/admin.html', user=admin)
+            return redirect(url_for('admin'))
+        else:
+            message = 'Please enter correct email / password!'
+    return render_template(template_name_or_list='/user/login.html', message=message)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('userid', None)
+    session.pop('email', None)
+    return redirect(url_for('index'))
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    message = ''
+    if request.method == 'POST' and 'name' in request.form and 'password' in request.form and 'email' in request.form:
+        userName = request.form['name']
+        password = request.form['password']
+        email = request.form['email']
+        conn = sqlite3.connect(sqldbname_kiet)
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM user WHERE email = ?', (email,))
+        account = cursor.fetchone()
+        if account:
+            message = 'Account already exists!'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            message = 'Invalid email address!'
+        elif not userName or not password or not email:
+            message = 'Please fill out the form!'
+        else:
+            cursor.execute('INSERT INTO user VALUES (NULL, ?, ?, ?)', (userName, email, password,))
+            conn.commit()
+            message = 'You have successfully registered!'
+            return redirect(url_for('login'))
+        conn.close()
+    elif request.method == 'POST':
+        message = 'Please fill out the form!'
+    return render_template('/user/register.html', message=message)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5005)

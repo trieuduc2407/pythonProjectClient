@@ -1,0 +1,11 @@
+.fa-solid{
+    transform: rotate(0deg);
+}
+.btn{
+    padding: 8px 20px;
+    background-color: #A2001D;
+}
+a.btn-order:hover{
+    background-color: #15080A;
+    color: #E52525;
+}
