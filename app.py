@@ -17,10 +17,10 @@ def index():
     response = requests.get(baseUrl)
     if response.status_code == 200:
         items = response.json()
-        return render_template('index.html', items=items)
+        return render_template('/admin/index.html', items=items)
     else:
         flash('Something went wrong')
-    return render_template('index.html')
+    return render_template('/admin/index.html')
 
 
 @app.route('/search', methods=['get', 'post'])
@@ -30,15 +30,14 @@ def search():
         response = requests.post(baseUrl+'/searchData', json={'search_text': search_text})
         if response.status_code == 200:
             items = response.json()
-            print(items)
-            return render_template('search.html', items=items, search_text=search_text)
+            return render_template('/admin/search.html', items=items)
         else:
             flash('Something went wrong')
-            return render_template('search.html')
+            return render_template('/admin/search.html')
     elif request.method == 'GET':
         response = requests.get(baseUrl)
         if response.status_code == 200:
-            return render_template('search.html')
+            return render_template('/admin/search.html')
         else:
             flash('Something went wrong')
 
@@ -48,7 +47,7 @@ def admin():
     response = requests.get(baseUrl)
     if response.status_code == 200:
         items = response.json()
-        return render_template('admin.html', items=items)
+        return render_template('/admin/admin.html', items=items)
     else:
         flash('Something went wrong')
     return redirect(url_for('admin'))
@@ -79,12 +78,12 @@ def admin_add():
                 return redirect(url_for('admin'))
             else:
                 flash('Something went wrong')
-                return render_template('adminAdd.html')
+                return render_template('/admin/adminAdd.html')
         else:
             flash('info required')
             return redirect(url_for('adminAdd'))
     else:
-        return render_template('adminAdd.html')
+        return render_template('/admin/adminAdd.html')
 
 
 @app.route('/test/<id>', methods=['get', 'post'])
@@ -171,7 +170,7 @@ def adminUpdate(product_id):
         cur.execute('select * from sanpham where product_id=?', (product_id,))
         item = cur.fetchone()
         connection.close()
-        return render_template('adminUpdate.html', item=item)
+        return render_template('/admin/adminUpdate.html', item=item)
 
 
 @app.route('/adminDelete/<product_id>', methods=['post'])
