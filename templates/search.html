@@ -11,31 +11,46 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/search" method="post">
-    <input type="text" name="search_text" id="search_text">
-    <button type="submit">search</button>
-</form>
-<div class="search">
-    {% if search_text %}
-        you searched: {{ search_text }}
-        {% if items %}
-        <div class="menu">
-            <ul>
-                {% for row in items %}
-                <li>
-                    {{row[1]}}
-                    {{row[2]}}
-                    {{row[3]}}
-                    <img src="{{row[4]}}" alt="">
-                    {{row[5]}}
-                </li>
-                {% endfor %}
-            </ul>
+<div class="container text-center">
+    <form action="/search" method="post">
+        <div class="input-group col-6 mb-3 mt-5">
+            <input type="text" class="form-control" name="search_text"
+                   aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Tìm kiếm</button>
         </div>
-        {% else %}
-            <h1>khong</h1>
-        {% endif %}
-    {% endif %}
+    </form>
+    <div class="row mt-5 pt-2">
+        <div class="col-1 fw-bold">ID</div>
+        <div class="col-1 fw-bold">Tên</div>
+        <div class="col-1 fw-bold">Số lượng</div>
+        <div class="col-1 fw-bold">Giá</div>
+        <div class="col-3 fw-bold">Ảnh sản phẩm</div>
+        <div class="col-1 fw-bold">Phân khúc</div>
+    </div>
+    <div class="row my-5 py-2">
+        {% for item in items %}
+        <div class="row mt-0 mb-2">
+            <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item[0]}}</div>
+            <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item[1]}}</div>
+            <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item[2]}}</div>
+            <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item[3]}}</div>
+            <div class="col-3 align-items-center justify-content-center d-flex"><img class="img-fluid" src="{{item[4]}}"
+                                                                                     alt=""></div>
+            <div class="col-1 align-items-center justify-content-center d-flex fw-bold"
+                 style="text-transform: uppercase">
+                {{item[5]}}
+            </div>
+            <form class="col-2 align-items-center justify-content-center d-flex "
+                  action="/adminDelete/{{item[0]}}" method="post">
+                <button type="submit" class="btn btn-lg btn-primary">Xoá sản phẩm</button>
+            </form>
+            <a class="col-2 align-items-center justify-content-center text-decoration-none d-flex "
+               href="/adminUpdate/{{item[0]}}">
+                <button type="submit" class="btn btn-lg btn-primary">Sửa sản phẩm</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 </body>
 </html>

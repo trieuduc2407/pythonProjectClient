@@ -15,13 +15,19 @@
 
 </head>
 <body>
-<div class="container text-center">
-    <div class="row">
-        
+<div class="container my-5 text-center">
+    <div class="row mt-5 py-2">
+        <form action="/search" method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search_text"
+                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+            </div>
+        </form>
     </div>
-    <div class = "row justify-content-center mt-5 mb-3">
+    <div class="row justify-content-center mt-3 mb-3">
         <div class="col-4">
-            <a href = "/adminAdd">
+            <a href="/adminAdd">
                 <button type="submit" class="btn btn-primary btn-lg">Thêm sản phẩm</button>
             </a>
         </div>
@@ -40,12 +46,17 @@
         <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['product_name']}}</div>
         <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['quantity']}}</div>
         <div class="col-1 align-items-center justify-content-center d-flex fw-bold">{{item['price']}}</div>
-        <div class="col-3 align-items-center justify-content-center d-flex"><img class="img-fluid" src="{{item['img']}}" alt=""></div>
-        <div class="col-1 align-items-center justify-content-center d-flex fw-bold" style="text-transform: uppercase">{{item['product_type']}}</div>
-        <form class="col-2 align-items-center justify-content-center d-flex " action="/adminDelete/{{item['product_id']}}" method="post">
+        <div class="col-3 align-items-center justify-content-center d-flex"><img class="img-fluid" src="{{item['img']}}"
+                                                                                 alt=""></div>
+        <div class="col-1 align-items-center justify-content-center d-flex fw-bold" style="text-transform: uppercase">
+            {{item['product_type']}}
+        </div>
+        <form class="col-2 align-items-center justify-content-center d-flex "
+              action="/adminDelete/{{item['product_id']}}" method="post">
             <button type="submit" class="btn btn-lg btn-primary">Xoá sản phẩm</button>
         </form>
-        <a class="col-2 align-items-center justify-content-center text-decoration-none d-flex " href="/adminUpdate/{{item['product_id']}}">
+        <a class="col-2 align-items-center justify-content-center text-decoration-none d-flex "
+           href="/adminUpdate/{{item['product_id']}}">
             <button type="submit" class="btn btn-lg btn-primary">Sửa sản phẩm</button>
         </a>
     </div>
