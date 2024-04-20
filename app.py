@@ -87,12 +87,6 @@ def admin_add():
         return render_template('adminAdd.html')
 
 
-@app.route('/test/<id>', methods=['get', 'post'])
-def test(id):
-    print(id)
-    return id
-
-
 # @app.route('/adminUpdate/<product_id>', methods=['get', 'post'])
 # def adminUpdate(product_id):
 #     # print(product_id)
